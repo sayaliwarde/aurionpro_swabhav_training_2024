@@ -1,0 +1,5 @@
+package com.aurionpro.solution.guitar.model;
+
+public enum Wood {
+
+}

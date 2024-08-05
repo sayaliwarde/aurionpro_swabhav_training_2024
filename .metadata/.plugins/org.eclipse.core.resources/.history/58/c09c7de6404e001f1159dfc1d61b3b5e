@@ -1,0 +1,5 @@
+package com.aurionpro.dip.solution.model;
+
+public class NetworkLogger {
+
+}

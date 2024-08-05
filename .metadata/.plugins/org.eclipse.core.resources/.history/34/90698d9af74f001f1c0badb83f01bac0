@@ -1,0 +1,34 @@
+package com.aurionpro.structural.decorator.test;
+
+import com.aurionpro.structural.decorator.model.GoldenHat;
+import com.aurionpro.structural.decorator.model.IHat;
+import com.aurionpro.structural.decorator.model.PremiumHat;
+import com.aurionpro.structural.decorator.model.RibbonHat;
+import com.aurionpro.structural.decorator.model.StandardHat;
+
+public class HatTest {
+	public static void main(String[] args) {
+        // Create a Standard Hat
+        IHat standardHat = new StandardHat();
+        
+        // Decorate the Standard Hat with a Golden Finish
+        IHat goldenStandardHat = new GoldenHat(standardHat);
+        
+        // Decorate the Golden Standard Hat with a Ribbon
+        IHat ribbonGoldenStandardHat = new RibbonHat(goldenStandardHat);
+
+        // Print details for the Ribbon Golden Standard Hat
+        System.out.println("Name: " + ribbonGoldenStandardHat.getName());
+        System.out.println("Price: " + ribbonGoldenStandardHat.getPrice());
+        System.out.println("Description: " + ribbonGoldenStandardHat.getDescription());
+
+        // Similarly, you can create and test Premium Hat with different decorations
+        IHat premiumHat = new PremiumHat();
+        IHat ribbonPremiumHat = new RibbonHat(premiumHat);
+
+        System.out.println("\nName: " + ribbonPremiumHat.getName());
+        System.out.println("Price: " + ribbonPremiumHat.getPrice());
+        System.out.println("Description: " + ribbonPremiumHat.getDescription());
+    }
+
+}

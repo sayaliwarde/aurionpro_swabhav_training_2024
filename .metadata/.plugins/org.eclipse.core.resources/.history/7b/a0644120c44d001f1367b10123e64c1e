@@ -1,0 +1,33 @@
+package com.aurionpro.srp.violation.test;
+
+import java.util.Scanner;
+
+import com.aurionpro.srp.violation.model.Invoice;
+import com.aurionpro.srp.violation.model.InvoicePrinter;
+import com.aurionpro.srp.violation.model.TaxCalculator;
+
+public class InvoiceTest {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+			
+		String id=scanner.next();
+		System.out.println("enter your id:" +id);
+		
+		String description=scanner.next();
+		System.out.println("enter desc" +description);
+		
+		double amount=scanner.nextDouble();
+		System.out.println("enter amt:" +amount);
+		
+		double tax=scanner.nextDouble();
+		System.out.println("enter tax" +tax);
+		
+
+		Invoice invoice=new Invoice(id, description, amount, tax); 	
+        TaxCalculator taxCalculator = new TaxCalculator(invoice);
+        InvoicePrinter invoicePrinter = new InvoicePrinter(invoice, taxCalculator);
+                
+        invoicePrinter.displayInvoice();
+	}
+
+}

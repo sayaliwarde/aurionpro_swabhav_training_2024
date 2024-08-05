@@ -1,0 +1,44 @@
+package com.aurionpro.ocp.solution.model;
+
+public class FixedDeposit {
+	private int accountNumber;
+	private String name;
+	private int duration;
+	private double principle;
+	public FixedDeposit(int accountNumber, String name, int duration, double principle) {
+		super();
+		this.accountNumber = accountNumber;
+		this.name = name;
+		this.duration = duration;
+		this.principle = principle;
+	}
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	public double getPrinciple() {
+		return principle;
+	}
+	public void setPrinciple(double principle) {
+		this.principle = principle;
+	}
+	
+	
+	
+	
+
+}

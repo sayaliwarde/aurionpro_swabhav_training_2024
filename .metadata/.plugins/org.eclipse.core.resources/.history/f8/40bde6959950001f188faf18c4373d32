@@ -1,0 +1,6 @@
+package com.aurionpro.behavioural.state.model;
+
+public class Ordered implements IPacketState{
+	
+
+}

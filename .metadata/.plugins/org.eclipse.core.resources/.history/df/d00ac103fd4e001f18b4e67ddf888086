@@ -1,0 +1,22 @@
+package com.aurionpro.creational.singleton.model;
+
+public class Database {
+	
+	private Database database;
+	
+		private Database() {
+			System.out.println("Database created");
+			
+		}
+		
+		public static Database getDatabase() {
+			if(database==null)
+				database = new Database();
+			return database;
+		}
+		public void Database()
+		{
+			System.out.println("database connected successfully");
+		}
+		
+}

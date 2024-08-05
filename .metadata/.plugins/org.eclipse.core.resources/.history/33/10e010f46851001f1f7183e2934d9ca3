@@ -1,0 +1,12 @@
+package com.aurionpro.model;
+
+public class Operations {
+	int addition(int number1 , int number2) {
+		return number1+number2;
+	}
+		int substrcation(int number3 , int number4) {
+			return number3-number4;
+		}
+	
+
+}

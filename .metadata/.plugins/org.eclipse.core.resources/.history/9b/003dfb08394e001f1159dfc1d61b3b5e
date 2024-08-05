@@ -1,0 +1,11 @@
+package com.aurionpro.ocp.solution.test;
+
+import com.aurionpro.ocp.solution.model.Holi;
+
+public class FixedDepositTest {
+	public static void main(String[] args) {
+		Holi holi=new Holi();
+		System.out.println(holi.getInterestRate());
+	}
+
+}

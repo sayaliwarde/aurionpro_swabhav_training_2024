@@ -1,0 +1,9 @@
+package com.aurionpro.model;
+
+public class Student {
+	
+	public double calculatePercentage() {
+		return ((marks/numberOfSubjects)*100);
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.aurionpro.structural.decorator.model;
+
+
+
+public class CarDecorator {
+	
+	private OilChange oilChange;
+	public CarDecorator(OilChange oilChange) {
+		this.oilChange= oilChange;
+	}
+	
+	
+	private WheelAlignment wheelAlignment;
+	public CarDecorator(WheelAlignment wheelAlignment) {
+		this.wheelAlignment = wheelAlignment;
+	}
+	
+	
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.aurionpro.behavioural.iterator.model;
+
+public class PlaylistIterator {
+
+}

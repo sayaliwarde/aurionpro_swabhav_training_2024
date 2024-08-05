@@ -1,0 +1,46 @@
+package com.aurionpro.model;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class OperationsTest {
+	Operations operations;
+	
+	@BeforeEach
+	void init() {
+		operations = new Operations();	
+	}
+	
+	@AfterEach
+	void satus() {
+		System.out.println("Test executed");
+	}
+
+
+	@Test
+	void testAddition() {
+		
+		int actual=operations.addition(5,5);
+		int expected=10;		
+		//fn in junit to check whether the expected output is same as actual
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void testSubstraction() {
+		Operations operations = new Operations();
+		assertEquals(0, operations.substrcation(2, 2), "This fn must do substraction");
+	}
+	
+	@Test
+	void testDivision() {
+		Operations operations = new Operations();
+		assertThrows(ArithmeticException.class,  operations.division(5,0));
+	}
+
+
+}

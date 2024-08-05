@@ -1,0 +1,5 @@
+package com.aurionpro.creational.abstractfactory.model;
+
+public class TataFactory {
+
+}

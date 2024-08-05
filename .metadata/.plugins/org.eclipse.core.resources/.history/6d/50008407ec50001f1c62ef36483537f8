@@ -1,0 +1,17 @@
+package com.aurionpro.behavioural.command.model;
+
+public class RemoteControl {
+	private ICommand command;
+
+	public RemoteControl(ICommand command) {
+		super();
+		this.command = command;
+	}
+	
+	public void pressButton() {
+		command.execute();
+	}
+	
+	
+
+}
