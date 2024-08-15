@@ -1,9 +1,0 @@
-package com.aurionpro.model;
-
-public interface IStudent {
-	
-	double marks();
-	double numberOfSubjects();
-	
-
-}

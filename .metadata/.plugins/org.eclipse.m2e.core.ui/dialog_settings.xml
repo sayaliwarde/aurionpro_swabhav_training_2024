@@ -7,7 +7,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="20_unittesting_app"/>
+			<item value="29-spring2-app"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -45,6 +45,10 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\aurionpro_training"/>
+			<item value="C:\aurionpro_training\28-spring-app\src\main\resources\config.xml"/>
+			<item value="C:\aurionpro_training\28-spring-app"/>
+			<item value="C:\aurionpro_training\banking-app\src\com\aurionpro\controller\CustomerController.java"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

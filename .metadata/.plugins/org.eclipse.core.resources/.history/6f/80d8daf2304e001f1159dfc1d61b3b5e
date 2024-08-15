@@ -1,8 +1,0 @@
-package com.aurionpro.srp.violation.model;
-
-
-public interface Shapes {
-	public int area();
-
-}
-

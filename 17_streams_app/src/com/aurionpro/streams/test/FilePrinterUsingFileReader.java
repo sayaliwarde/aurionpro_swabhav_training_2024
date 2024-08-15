@@ -4,6 +4,7 @@ package com.aurionpro.streams.test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class FilePrinterUsingFileReader {
 	public static void main(String[] args) {
@@ -23,6 +24,9 @@ public class FilePrinterUsingFileReader {
 				}
 			
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
