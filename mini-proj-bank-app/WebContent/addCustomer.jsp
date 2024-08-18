@@ -7,6 +7,7 @@
     <title>Add New Customer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+    
         body {
             background-color: #f8f9fa;
         }
@@ -33,11 +34,14 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="adminDashboard.jsp">Admin Dashboard</a>
+     <button class="btn btn-outline-secondary ml-auto" onclick="window.history.back();">Back</button>
 </nav>
 
 <div class="container form-container">
+
+
     <h3 class="text-center">Add New Customer</h3>
-    <form action="AdminController" method="post">
+    <form action="admin" method="post">
         <input type="hidden" name="action" value="addCustomer">
         <div class="form-group">
             <label for="firstName">First Name:</label>
@@ -55,7 +59,9 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
+        
         <button type="submit" class="btn btn-primary btn-block">Add Customer</button>
+        
         <% if (request.getAttribute("message") != null) { %>
             <div class="alert alert-info text-center mt-3">
                 <%= request.getAttribute("message") %>

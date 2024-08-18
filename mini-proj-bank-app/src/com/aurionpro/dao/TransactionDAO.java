@@ -1,7 +1,5 @@
 package com.aurionpro.dao;
 
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,13 +69,34 @@ public class TransactionDAO {
         return transactions;
     }
 
-    public List<Transaction> getTransactionsByFilter(String type, String startDate, String endDate) throws SQLException, ClassNotFoundException {
+    public List<Transaction> getFilteredTransactions(String startDate, String endDate, String transactionType) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getConnection();
-        String sql = "SELECT * FROM Transaction WHERE type = ? AND transactionDate BETWEEN ? AND ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, type);
-        preparedStatement.setString(2, startDate);
-        preparedStatement.setString(3, endDate);
+        StringBuilder sql = new StringBuilder("SELECT * FROM Transaction WHERE 1=1");
+
+        // Add conditions based on available filters
+        if (startDate != null && !startDate.isEmpty()) {
+            sql.append(" AND transactionDate >= ?");
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            sql.append(" AND transactionDate <= ?");
+        }
+        if (transactionType != null && !transactionType.isEmpty()) {
+            sql.append(" AND type = ?");
+        }
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+
+        // Set parameters based on available filters
+        int paramIndex = 1;
+        if (startDate != null && !startDate.isEmpty()) {
+            preparedStatement.setString(paramIndex++, startDate);
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            preparedStatement.setString(paramIndex++, endDate);
+        }
+        if (transactionType != null && !transactionType.isEmpty()) {
+            preparedStatement.setString(paramIndex++, transactionType);
+        }
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Transaction> transactions = new ArrayList<>();
@@ -95,4 +114,3 @@ public class TransactionDAO {
         return transactions;
     }
 }
-

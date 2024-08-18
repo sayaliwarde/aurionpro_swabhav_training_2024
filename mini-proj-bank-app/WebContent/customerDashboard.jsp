@@ -27,25 +27,25 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Customer Dashboard</a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="CustomerController?action=viewPassbook">View Passbook</a>
+                <a class="nav-link" href="customer?action=viewPassbook">View Passbook</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="CustomerController?action=newTransaction">New Transaction</a>
+                <a class="nav-link" href="newTransaction.jsp">New Transaction</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="CustomerController?action=editProfile">Edit Profile</a>
+                <a class="nav-link" href="editProfile.jsp">Edit Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="LogoutServlet">Logout</a>
+                <a class="nav-link" href="logout">Logout</a>
             </li>
         </ul>
     </div>
-</nav>
+</nav> -->
 
 <div class="container dashboard-container">
     <div class="row">
@@ -56,23 +56,28 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">View Passbook</h5>
                         <p class="card-text">Check your transaction history.</p>
-                        <a href="CustomerController?action=viewPassbook" class="btn btn-primary">View Passbook</a>
+                        <a href="customer?action=viewPassbook" class="btn btn-primary">View Passbook</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">New Transaction</h5>
                         <p class="card-text">Make a new transaction.</p>
-                        <a href="CustomerController?action=newTransaction" class="btn btn-success">New Transaction</a>
+                        <a href="newTransaction.jsp" class="btn btn-success">New Transaction</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Edit Profile</h5>
                         <p class="card-text">Update your personal information.</p>
-                        <a href="CustomerController?action=editProfile" class="btn btn-warning">Edit Profile</a>
+                        <a href="editProfile.jsp" class="btn btn-warning">Edit Profile</a>
                     </div>
                 </div>
+                <div class="container">
+    <div class="logout-wrapper">
+        <a href="logout" class="btn btn-danger">Logout</a>
+    </div>
+</div>
             </div>
         </div>
     </div>

@@ -27,6 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="customerDashboard.jsp">Customer Dashboard</a>
+     <button class="btn btn-outline-secondary ml-auto" onclick="window.history.back();">Back</button>
 </nav>
 
 <div class="container table-container">

@@ -28,30 +28,44 @@
             margin-top: 20px;
         }
     </style>
+    <script>
+        function toggleReceiverAccountField() {
+            const transactionType = document.getElementById('type').value;
+            const receiverAccountField = document.getElementById('receiverAccountField');
+
+            if (transactionType === 'transfer') {
+                receiverAccountField.style.display = 'block';
+            } else {
+                receiverAccountField.style.display = 'none';
+                document.getElementById('receiverAccountNumber').value = ''; // Clear the input field when hidden
+            }
+        }
+    </script>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="customerDashboard.jsp">Customer Dashboard</a>
+    <button class="btn btn-outline-secondary ml-auto" onclick="window.history.back();">Back</button>
 </nav>
 
 <div class="container form-container">
     <h3 class="text-center">New Transaction</h3>
-    <form action="CustomerController" method="post">
+    <form action="customer" method="post">
         <input type="hidden" name="action" value="newTransaction">
         <div class="form-group">
             <label for="type">Transaction Type:</label>
-            <select class="form-control" id="type" name="type" required>
+            <select class="form-control" id="type" name="type" required onchange="toggleReceiverAccountField()">
                 <option value="credit">Credit</option>
                 <option value="debit">Debit</option>
-                <option value="transfer">Transfer</option>
+                <option value="transfer">Bank Transfer</option>
             </select>
         </div>
         <div class="form-group">
             <label for="amount">Amount:</label>
             <input type="number" class="form-control" id="amount" name="amount" required>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="receiverAccountField" style="display: none;">
             <label for="receiverAccountNumber">Receiver Account Number (for Transfer):</label>
             <input type="text" class="form-control" id="receiverAccountNumber" name="receiverAccountNumber">
         </div>

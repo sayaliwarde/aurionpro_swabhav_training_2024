@@ -18,16 +18,9 @@ import com.aurionpro.model.Account;
 import com.aurionpro.model.Customer;
 import com.aurionpro.model.Transaction;
 
-
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-
-    public AdminController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    private static final long serialVersionUID = 1L;
 
     private CustomerDAO customerDAO = new CustomerDAO();
     private AccountDAO accountDAO = new AccountDAO();
@@ -62,6 +55,9 @@ public class AdminController extends HttpServlet {
                 case "viewTransactions":
                     viewTransactions(request, response);
                     break;
+                case "prepareAddAccount":
+                    prepareAddAccount(request, response);
+                    break;
                 default:
                     response.sendRedirect("adminDashboard.jsp");
                     break;
@@ -77,7 +73,6 @@ public class AdminController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Validation for email and password
         if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
             request.setAttribute("message", "Invalid email format");
             RequestDispatcher dispatcher = request.getRequestDispatcher("addCustomer.jsp");
@@ -134,18 +129,32 @@ public class AdminController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void prepareAddAccount(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, ServletException, IOException {
+        List<Customer> newCustomers = customerDAO.getNewCustomers();
+        request.setAttribute("newCustomers", newCustomers);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("addAccount.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private void viewCustomers(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, ServletException, IOException {
-        List<Customer> customers = customerDAO.getAllCustomers();
+        String sortBy = request.getParameter("sortBy");
+        if (sortBy == null) {
+            sortBy = "nameAsc";
+        }
+        List<Customer> customers = customerDAO.getSortedCustomers(sortBy);
         request.setAttribute("customers", customers);
         RequestDispatcher dispatcher = request.getRequestDispatcher("viewCustomers.jsp");
         dispatcher.forward(request, response);
     }
 
     private void viewTransactions(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, ServletException, IOException {
-        List<Transaction> transactions = transactionDAO.getAllTransactions();
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        String transactionType = request.getParameter("transactionType");
+
+        List<Transaction> transactions = transactionDAO.getFilteredTransactions(startDate, endDate, transactionType);
         request.setAttribute("transactions", transactions);
         RequestDispatcher dispatcher = request.getRequestDispatcher("viewTransactions.jsp");
         dispatcher.forward(request, response);
     }
 }
-           

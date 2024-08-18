@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import= "java.util.List" %>
+<%@ page import="com.aurionpro.model.Customer" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,19 +35,27 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="adminDashboard.jsp">Admin Dashboard</a>
+    <button class="btn btn-outline-secondary ml-auto" onclick="window.history.back();">Back</button>
 </nav>
 
 <div class="container form-container">
     <h3 class="text-center">Add New Account</h3>
-    <form action="AdminController" method="post">
+    <form action="admin" method="post">
         <input type="hidden" name="action" value="addAccount">
         <div class="form-group">
             <label for="customerId">Customer ID:</label>
             <select class="form-control" id="customerId" name="customerId" required>
-                <!-- Populate this dropdown with customers from the database -->
-                <option value="1">Customer 1</option>
-                <option value="2">Customer 2</option>
-                <!-- Add more options here -->
+                <%
+                    @SuppressWarnings("unchecked")
+                    List<Customer> newCustomers = (List<Customer>) request.getAttribute("newCustomers");
+                %>
+                <% if (newCustomers != null && !newCustomers.isEmpty()) { %>
+                    <% for (Customer customer : newCustomers) { %>
+                        <option value="<%= customer.getCustomerId() %>"><%= customer.getFirstName() %> <%= customer.getLastName() %> (ID: <%= customer.getCustomerId() %>)</option>
+                    <% } %>
+                <% } else { %>
+                    <option value="">No new customers available</option>
+                <% } %>
             </select>
         </div>
         <div class="form-group">

@@ -1,12 +1,13 @@
 package com.aurionpro.controller;
 
-import com.aurionpro.db.CustomerDAO;
-import com.aurionpro.entity.Customer;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.IOException;
+
+import com.aurionpro.db.CustomerDAO;
+import com.aurionpro.entity.Customer;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {

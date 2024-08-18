@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.aurionpro.model.Customer" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,29 +34,47 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="customerDashboard.jsp">Customer Dashboard</a>
+    <button class="btn btn-outline-secondary ml-auto" onclick="window.history.back();">Back</button>
 </nav>
 
 <div class="container form-container">
     <h3 class="text-center">Edit Profile</h3>
-    <form action="CustomerController" method="post">
+    <form action="customer" method="post">
         <input type="hidden" name="action" value="editProfile">
+        <%
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer == null) {
+        %>
+                <div class="alert alert-danger text-center">Customer details not available. Please try again.</div>
+        <%
+            } else {
+        %>
         <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= customer.getFirstName() %>" readonly>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= customer.getLastName() %>" readonly>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" value="<%= customer.getEmail() %>" readonly>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Update</button>
+        <div class="form-group">
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+        </div>
+        <div class="form-group">
+            <label for="newPassword">New Password:</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Update Password</button>
         <% if (request.getAttribute("message") != null) { %>
             <div class="alert alert-info text-center mt-3">
                 <%= request.getAttribute("message") %>
             </div>
+        <% } %>
         <% } %>
     </form>
 </div>

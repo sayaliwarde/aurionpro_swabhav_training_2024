@@ -23,31 +23,38 @@
         .dashboard-container .btn {
             border-radius: 25px;
         }
+        .navbar-nav .nav-item .nav-link {
+            color: white;
+        }
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ddd;
+        }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            border-radius: 25px;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+            border-radius: 25px;
+        }
+        .btn-logout:hover {
+            background-color: #c82333;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Banking Admin</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="admin?action=viewCustomers">View Customers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin?action=addCustomer">Add New Customer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin?action=addAccount">Add New Account</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin?action=viewTransactions">View Transactions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
-            </li>
-        </ul>
-    </div>
+    <a class="navbar-brand" href="adminDashboard.jsp">Admin Dashboard</a>
+    <button class="btn btn-back ml-auto" onclick="window.history.back();">Back</button>
+    <a href="logout" class="btn btn-logout ml-2">Logout</a>
 </nav>
 
 <div class="container dashboard-container">
@@ -58,29 +65,29 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">View Customers</h5>
-                        <p class="card-text">Manage and view customer details.</p>
-                        <a href="AdminController?action=viewCustomers" class="btn btn-primary">View Customers</a>
+                        <p class="card-text">View customer details.</p>
+                        <a href="admin?action=viewCustomers" class="btn btn-primary">View Customers</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Add New Customer</h5>
                         <p class="card-text">Add new customers to the bank.</p>
-                        <a href="AdminController?action=addCustomer" class="btn btn-success">Add Customer</a>
+                        <a href="addCustomer.jsp" class="btn btn-success">Add Customer</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">Add New Account</h5>
                         <p class="card-text">Open new accounts for customers.</p>
-                        <a href="AdminController?action=addAccount" class="btn btn-warning">Add Account</a>
+                        <a href="admin?action=prepareAddAccount" class="btn btn-warning">Add Account</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">View Transactions</h5>
-                        <p class="card-text">View and manage transactions.</p>
-                        <a href="AdminController?action=viewTransactions" class="btn btn-danger">View Transactions</a>
+                        <p class="card-text">View transactions.</p>
+                        <a href="admin?action=viewTransactions" class="btn btn-danger">View Transactions</a>
                     </div>
                 </div>
             </div>
